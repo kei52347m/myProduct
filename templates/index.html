@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>Index</title>
+    <meta charset="utf-8"/>
+    <!-- cssの読み込み -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>favCafe</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+</head>
+
+
+<body>
+    <div class="head">
+        <header>favCafe</header>
+    </div>
+
+    <div class="nav">
+        <ul style="list-style: none; padding-left: 0;">
+          <li><a href="{{ url_for('index') }}">あなたへのおすすめ</a></li>
+        </ul>
+    </div>
+
+
+    {% for i in tabelog_data %}
+    <div class="contents">
+        <div class="image">
+            <div>
+                <img class="pic" src="{{ i[5] }}">
+            </div>
+            <div>
+                <img class="pic" src="{{ i[6] }}">
+            </div>
+            <div>
+                <img class="pic" src="{{ i[7] }}">
+            </div>
+            <div>
+                <img class="pic" src="{{ i[8] }}">
+            </div>
+            <div>
+                <img class="pic" src="{{ i[9] }}">
+            </div>
+            <div>
+                <img class="pic" src="{{ i[10] }}">
+            </div>
+        </div>
+        <h1>{{ i[1] }}</h1>
+        
+        <div class="items">
+            <div class="maps">
+            <a href="{{ 'https://www.google.co.jp/maps/search/' + i[4] + '+' + i[1] }}">
+                <img src="/static/img/map.jpeg" alt="Parrots">
+            </a>
+            <p>Map</p>
+            </div>
+            <div class="places">
+                <p>{{ i[2] }}</p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li><a href="{{ url_for('similar',num=i[0]) }}">このお店に似たお店を表示</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+    
+    <footer>
+        <a href="#" id="page-top"><img class="foot" src="/static/img/home1.jpeg"></i></a>
+    </footer>
+
+</body>
+</html>
